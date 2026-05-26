@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "media_mentions",
+  "info": {
+    "singularName": "media-mention",
+    "pluralName": "media-mentions",
+    "displayName": "Media Mention"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Headline": {
+      "type": "string"
+    },
+    "URL": {
+      "type": "string"
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

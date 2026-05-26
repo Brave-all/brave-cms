@@ -555,6 +555,37 @@ export interface ApiLeadLead extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMediaMentionMediaMention
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'media_mentions';
+  info: {
+    displayName: 'Media Mention';
+    pluralName: 'media-mentions';
+    singularName: 'media-mention';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Headline: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::media-mention.media-mention'
+    > &
+      Schema.Attribute.Private;
+    Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    URL: Schema.Attribute.String;
+  };
+}
+
 export interface ApiPcModePcMode extends Struct.SingleTypeSchema {
   collectionName: 'pc_modes';
   info: {
@@ -1614,6 +1645,7 @@ declare module '@strapi/strapi' {
       'api::footer.footer': ApiFooterFooter;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::lead.lead': ApiLeadLead;
+      'api::media-mention.media-mention': ApiMediaMentionMediaMention;
       'api::pc-mode.pc-mode': ApiPcModePcMode;
       'api::pin-search.pin-search': ApiPinSearchPinSearch;
       'api::pincode.pincode': ApiPincodePincode;
