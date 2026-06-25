@@ -1,7 +1,15 @@
 export default [
   "strapi::errors",
   "strapi::security",
-  "strapi::cors",
+  {
+    name: "strapi::cors",
+    config: {
+      origin: ["https://brave.tech", "https://web-staging.brave.tech"],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"],
+      headers: ["Content-Type", "Authorization", "Origin", "Accept"],
+      credentials: true,
+    },
+  },
   "strapi::poweredBy",
   "strapi::logger",
   "strapi::query",
