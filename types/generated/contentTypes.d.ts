@@ -528,6 +528,45 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiKeyboardPageKeyboardPage extends Struct.SingleTypeSchema {
+  collectionName: 'keyboard_pages';
+  info: {
+    displayName: 'Keyboard Page';
+    pluralName: 'keyboard-pages';
+    singularName: 'keyboard-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Button: Schema.Attribute.Component<'ancillary.button', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    KeyDetails: Schema.Attribute.Component<'ancillary.bullets', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::keyboard-page.keyboard-page'
+    > &
+      Schema.Attribute.Private;
+    Media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    OriginalPrice: Schema.Attribute.String;
+    Price: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Rows: Schema.Attribute.Component<'ancillary.rows', true>;
+    SEO: Schema.Attribute.Component<'ancillary.seo-details', false>;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLeadLead extends Struct.CollectionTypeSchema {
   collectionName: 'leads';
   info: {
@@ -1644,6 +1683,7 @@ declare module '@strapi/strapi' {
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::footer.footer': ApiFooterFooter;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::keyboard-page.keyboard-page': ApiKeyboardPageKeyboardPage;
       'api::lead.lead': ApiLeadLead;
       'api::media-mention.media-mention': ApiMediaMentionMediaMention;
       'api::pc-mode.pc-mode': ApiPcModePcMode;
