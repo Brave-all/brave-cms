@@ -1,0 +1,51 @@
+{
+  "kind": "singleType",
+  "collectionName": "order_success_pages",
+  "info": {
+    "singularName": "order-success-page",
+    "pluralName": "order-success-pages",
+    "displayName": "Order Success Page",
+    "description": "Content for the post-checkout order confirmation and thank you screen"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Subtitle": {
+      "type": "text"
+    },
+    "Steps_heading": {
+      "type": "string"
+    },
+    "Next_steps": {
+      "type": "component",
+      "component": "ancillary.order-step",
+      "repeatable": true
+    },
+    "Paid_notice": {
+      "type": "text"
+    },
+    "Cod_notice": {
+      "type": "text"
+    },
+    "Return_home_btn": {
+      "type": "component",
+      "component": "ancillary.button",
+      "repeatable": false
+    },
+    "Support_btn": {
+      "type": "component",
+      "component": "ancillary.button",
+      "repeatable": false
+    },
+    "SEO": {
+      "type": "component",
+      "component": "ancillary.seo-details",
+      "repeatable": false
+    }
+  }
+}
