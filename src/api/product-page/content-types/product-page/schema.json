@@ -30,6 +30,48 @@
       "type": "component",
       "component": "ancillary.product-page-main",
       "repeatable": true
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Price": {
+      "type": "string"
+    },
+    "OriginalPrice": {
+      "type": "string"
+    },
+    "Button": {
+      "type": "component",
+      "component": "ancillary.button",
+      "repeatable": false
+    },
+    "KeyDetails": {
+      "type": "component",
+      "component": "ancillary.bullets",
+      "repeatable": true
+    },
+    "Media": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Variant_options": {
+      "type": "component",
+      "component": "ancillary.variant-option",
+      "repeatable": true
+    },
+    "Buy_page_seo": {
+      "type": "component",
+      "component": "ancillary.seo-details",
+      "repeatable": false
     }
   }
 }

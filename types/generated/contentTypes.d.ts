@@ -472,6 +472,7 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   attributes: {
     Bg_asset: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Button: Schema.Attribute.Component<'ancillary.button', false>;
+    Buy_products: Schema.Attribute.Component<'ancillary.buy-product', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -540,6 +541,7 @@ export interface ApiKeyboardPageKeyboardPage extends Struct.SingleTypeSchema {
   };
   attributes: {
     Button: Schema.Attribute.Component<'ancillary.button', false>;
+    Buy_page_seo: Schema.Attribute.Component<'ancillary.seo-details', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -560,6 +562,9 @@ export interface ApiKeyboardPageKeyboardPage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     Rows: Schema.Attribute.Component<'ancillary.rows', true>;
     SEO: Schema.Attribute.Component<'ancillary.seo-details', false>;
+    Showcase_cta_button: Schema.Attribute.Component<'ancillary.button', false>;
+    Showcase_cta_description: Schema.Attribute.Text;
+    Showcase_cta_heading: Schema.Attribute.String;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -622,6 +627,44 @@ export interface ApiMediaMentionMediaMention
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     URL: Schema.Attribute.String;
+  };
+}
+
+export interface ApiOrderSuccessPageOrderSuccessPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'order_success_pages';
+  info: {
+    description: 'Content for the post-checkout order confirmation and thank you screen';
+    displayName: 'Order Success Page';
+    pluralName: 'order-success-pages';
+    singularName: 'order-success-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cod_notice: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::order-success-page.order-success-page'
+    > &
+      Schema.Attribute.Private;
+    Next_steps: Schema.Attribute.Component<'ancillary.order-step', true>;
+    Paid_notice: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    Return_home_btn: Schema.Attribute.Component<'ancillary.button', false>;
+    SEO: Schema.Attribute.Component<'ancillary.seo-details', false>;
+    Steps_heading: Schema.Attribute.String;
+    Subtitle: Schema.Attribute.Text;
+    Support_btn: Schema.Attribute.Component<'ancillary.button', false>;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -736,10 +779,14 @@ export interface ApiProductPageProductPage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Button: Schema.Attribute.Component<'ancillary.button', false>;
+    Buy_page_seo: Schema.Attribute.Component<'ancillary.seo-details', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
     Hover: Schema.Attribute.Component<'ancillary.sections', true>;
+    KeyDetails: Schema.Attribute.Component<'ancillary.bullets', true>;
     LaunchFilm: Schema.Attribute.Component<'ancillary.sections', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -747,15 +794,26 @@ export interface ApiProductPageProductPage extends Struct.SingleTypeSchema {
       'api::product-page.product-page'
     > &
       Schema.Attribute.Private;
+    Media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    OriginalPrice: Schema.Attribute.String;
+    Price: Schema.Attribute.String;
     ProductDetails: Schema.Attribute.Component<
       'ancillary.product-page-main',
       true
     >;
     publishedAt: Schema.Attribute.DateTime;
     SEODetails: Schema.Attribute.Component<'ancillary.seo-details', false>;
+    Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Variant_options: Schema.Attribute.Component<
+      'ancillary.variant-option',
+      true
+    >;
   };
 }
 
@@ -1686,6 +1744,7 @@ declare module '@strapi/strapi' {
       'api::keyboard-page.keyboard-page': ApiKeyboardPageKeyboardPage;
       'api::lead.lead': ApiLeadLead;
       'api::media-mention.media-mention': ApiMediaMentionMediaMention;
+      'api::order-success-page.order-success-page': ApiOrderSuccessPageOrderSuccessPage;
       'api::pc-mode.pc-mode': ApiPcModePcMode;
       'api::pin-search.pin-search': ApiPinSearchPinSearch;
       'api::pincode.pincode': ApiPincodePincode;

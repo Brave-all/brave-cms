@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_ancillary_buy_products",
+  "info": {
+    "displayName": "Buy Product",
+    "icon": "shopping-cart",
+    "description": "Product choice item for Buy Now dropdown menus"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Subtitle": {
+      "type": "string"
+    },
+    "Url": {
+      "type": "string"
+    },
+    "External_url": {
+      "type": "text"
+    },
+    "Is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "config": {}
+}

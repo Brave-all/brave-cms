@@ -43,6 +43,11 @@
         "videos",
         "audios"
       ]
+    },
+    "Buy_products": {
+      "type": "component",
+      "component": "ancillary.buy-product",
+      "repeatable": true
     }
   }
 }

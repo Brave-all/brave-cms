@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_ancillary_variant_options",
+  "info": {
+    "displayName": "Variant Option",
+    "icon": "layer-group",
+    "description": "Product purchase variant/edition options"
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "Shopify_variant_id": {
+      "type": "string"
+    },
+    "Price": {
+      "type": "string"
+    },
+    "OriginalPrice": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

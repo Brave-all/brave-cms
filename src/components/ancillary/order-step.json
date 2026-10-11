@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_ancillary_order_steps",
+  "info": {
+    "displayName": "Order Step",
+    "icon": "clipboard-check",
+    "description": "Order confirmation lifecycle step card"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Icon_name": {
+      "type": "enumeration",
+      "enum": [
+        "mail",
+        "package",
+        "truck",
+        "check",
+        "bell"
+      ],
+      "default": "package"
+    }
+  },
+  "config": {}
+}

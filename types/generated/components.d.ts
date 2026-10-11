@@ -53,6 +53,22 @@ export interface AncillaryButton extends Struct.ComponentSchema {
   };
 }
 
+export interface AncillaryBuyProduct extends Struct.ComponentSchema {
+  collectionName: 'components_ancillary_buy_products';
+  info: {
+    description: 'Product choice item for Buy Now dropdown menus';
+    displayName: 'Buy Product';
+    icon: 'shopping-cart';
+  };
+  attributes: {
+    External_url: Schema.Attribute.Text;
+    Is_active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    Subtitle: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
+    Url: Schema.Attribute.String;
+  };
+}
+
 export interface AncillaryDownloads extends Struct.ComponentSchema {
   collectionName: 'components_ancillary_downloads';
   info: {
@@ -127,6 +143,23 @@ export interface AncillaryMultipleSubheadings extends Struct.ComponentSchema {
   };
 }
 
+export interface AncillaryOrderStep extends Struct.ComponentSchema {
+  collectionName: 'components_ancillary_order_steps';
+  info: {
+    description: 'Order confirmation lifecycle step card';
+    displayName: 'Order Step';
+    icon: 'clipboard-check';
+  };
+  attributes: {
+    Description: Schema.Attribute.Text;
+    Icon_name: Schema.Attribute.Enumeration<
+      ['mail', 'package', 'truck', 'check', 'bell']
+    > &
+      Schema.Attribute.DefaultTo<'package'>;
+    Title: Schema.Attribute.String;
+  };
+}
+
 export interface AncillaryProductPageMain extends Struct.ComponentSchema {
   collectionName: 'components_ancillary_product_page_mains';
   info: {
@@ -184,6 +217,22 @@ export interface AncillarySeoDetails extends Struct.ComponentSchema {
   };
 }
 
+export interface AncillaryVariantOption extends Struct.ComponentSchema {
+  collectionName: 'components_ancillary_variant_options';
+  info: {
+    description: 'Product purchase variant/edition options';
+    displayName: 'Variant Option';
+    icon: 'layer-group';
+  };
+  attributes: {
+    Description: Schema.Attribute.String;
+    Label: Schema.Attribute.String;
+    OriginalPrice: Schema.Attribute.String;
+    Price: Schema.Attribute.String;
+    Shopify_variant_id: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -191,15 +240,18 @@ declare module '@strapi/strapi' {
       'ancillary.box-section': AncillaryBoxSection;
       'ancillary.bullets': AncillaryBullets;
       'ancillary.button': AncillaryButton;
+      'ancillary.buy-product': AncillaryBuyProduct;
       'ancillary.downloads': AncillaryDownloads;
       'ancillary.faq': AncillaryFaq;
       'ancillary.key-value': AncillaryKeyValue;
       'ancillary.list': AncillaryList;
       'ancillary.multiple-subheadings': AncillaryMultipleSubheadings;
+      'ancillary.order-step': AncillaryOrderStep;
       'ancillary.product-page-main': AncillaryProductPageMain;
       'ancillary.rows': AncillaryRows;
       'ancillary.sections': AncillarySections;
       'ancillary.seo-details': AncillarySeoDetails;
+      'ancillary.variant-option': AncillaryVariantOption;
     }
   }
 }

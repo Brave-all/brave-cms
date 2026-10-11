@@ -52,6 +52,22 @@
       "type": "component",
       "component": "ancillary.rows",
       "repeatable": true
+    },
+    "Showcase_cta_heading": {
+      "type": "string"
+    },
+    "Showcase_cta_description": {
+      "type": "text"
+    },
+    "Showcase_cta_button": {
+      "type": "component",
+      "component": "ancillary.button",
+      "repeatable": false
+    },
+    "Buy_page_seo": {
+      "type": "component",
+      "component": "ancillary.seo-details",
+      "repeatable": false
     }
   }
 }
